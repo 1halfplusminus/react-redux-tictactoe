@@ -1,0 +1,47 @@
+{
+  "name": "tdd",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "./src/index.ts",
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/src/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    }
+  },
+  "dependencies": {
+    "immutable-js": "^0.3.1-6",
+    "jest": "^22.4.3",
+    "redux": "^3.7.2",
+    "reselect": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.2",
+    "ts-jest": "^22.4.2",
+    "ts-loader": "^4.1.0",
+    "typescript": "^2.8.1",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC"
+}

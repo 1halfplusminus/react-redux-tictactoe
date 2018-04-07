@@ -27,6 +27,7 @@
   "dependencies": {
     "immutable": "^4.0.0-rc.9",
     "jest": "^22.4.3",
+    "reduce-reducers": "^0.1.2",
     "redux": "^3.7.2",
     "reselect": "^3.0.1"
   },

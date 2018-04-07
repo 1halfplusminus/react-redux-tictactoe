@@ -2,5 +2,6 @@
 
 export enum ActionType {
     IncrementCounter = 'IncrementCounter',
-    DecrementCounter = 'DecrementCounter'
+    DecrementCounter = 'DecrementCounter',
+    AddTodo = 'AddTodo',
 }

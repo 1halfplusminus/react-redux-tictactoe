@@ -1,21 +1,37 @@
 import {List} from "immutable";
 import {ActionType} from "./actions";
-import {Action, ITodo, Reducer} from "./types";
+import {Action, AppState, IAppState, Reducer} from "./types";
 
-export const todo: Reducer<List<ITodo>> = (state: List<ITodo>  = List(), action: Action) => {
-    switch (action.type) {
-        case ActionType.AddTodo:
-            return state.push(action.todo);
-        default:
+function calculateWinner(squares) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (const line of lines) {
+      const [a, b, c] = line;
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        return squares[a];
+      }
     }
-    return state;
+    return null;
 };
-export const counter: Reducer<number> = (state: number  = 0, action: Action) => {
+
+export const tictactoe: Reducer<IAppState> = (state: AppState  = new AppState(), action: Action) => {
     switch (action.type) {
-        case ActionType.IncrementCounter:
-            return state + action.increment;
-        case ActionType.DecrementCounter:
-            return state - action.decrement;
+        case ActionType.MakeMove:
+            if (!state.squares.get(action.index) && !state.winner) {
+                const nextSquare = state.squares.set(action.index, action.player);
+                return state
+                .set("player", (action.player === "X") ? "O" : "X")
+                .set("squares", nextSquare)
+                .set("winner", calculateWinner(nextSquare.toArray()));
+            }
         default:
     }
     return state;

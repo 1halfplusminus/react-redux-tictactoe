@@ -1,14 +1,13 @@
-import { IncrementAction } from "../types";
+import { MakeMoveAction, Player } from "../types";
 
 export enum ActionType {
-    IncrementCounter = "IncrementCounter",
-    DecrementCounter = "DecrementCounter",
-    AddTodo = "AddTodo",
+    MakeMove = "MakeMove",
 }
 
-export function increateCounter(value: number): IncrementAction {
+export function makeAMove(index: number, player: Player): MakeMoveAction {
     return {
-        increment: value,
-        type: ActionType.IncrementCounter,
+        index,
+        player,
+        type: ActionType.MakeMove,
     };
 }

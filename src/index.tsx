@@ -1,9 +1,18 @@
 import React = require("react");
 import * as ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 
-import { Hello } from "./components/Hello";
+import { ConnectedGame } from "./connected/GameConnected";
+import "./index.scss";
+import { tictactoe } from "./reducer";
+
+const store = createStore(tictactoe);
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <Provider store={store}>
+        <ConnectedGame />
+    </Provider>
+   ,
     document.getElementById("app"),
 );

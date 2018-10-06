@@ -1,6 +1,7 @@
 import React = require("react");
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import "reactive-elements";
 import { createStore } from "redux";
 
 import { ConnectedGame } from "./connected/GameConnected";
@@ -9,10 +10,21 @@ import { tictactoe } from "./reducer";
 
 const store = createStore(tictactoe);
 
-ReactDOM.render(
-    <Provider store={store}>
+export function createTictactoe(query: string) {
+  for (const domContainer of document.querySelectorAll(query)) {
+    ReactDOM.render(
+      <Provider store={store}>
         <ConnectedGame />
-    </Provider>
-   ,
-    document.getElementById("app"),
-);
+      </Provider>,
+      domContainer,
+    );
+  }
+}
+// @ts-ignore
+document.registerReact("x-tictactoe",
+() => (
+  <Provider store={store}>
+    <ConnectedGame />
+  </Provider>
+));
+module.exports = createTictactoe;

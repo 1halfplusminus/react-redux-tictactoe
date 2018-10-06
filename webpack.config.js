@@ -34,20 +34,18 @@ module.exports = {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'tictactoe.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: '/',
+    "library": "tictactoe",
+    "libraryTarget": "var"
   },
   devServer: {
     contentBase: './dist',
     open: true,
     hot: true,
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
-  },
+  optimization: {},
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({

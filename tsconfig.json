@@ -11,10 +11,14 @@
     "target": "es5",
     "allowJs": true,
     "jsx": "react",
+    "downlevelIteration": true,
     "lib": [
       "es2015",
       "es2017",
-      "dom"
+      "es5",
+      "dom",
+      "dom.iterable",
+      "esnext.array",
     ]
   }
 }

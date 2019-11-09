@@ -11,9 +11,6 @@ export interface BoardProps {
   winner: Player | null;
 }
 
-const Status = styled.div`
-  margin-bottom: 10px;
-`;
 const BoardRow = styled.div`
   ::after {
     clear: both;
@@ -23,20 +20,13 @@ const BoardRow = styled.div`
 `;
 const BoardWrapper = styled.div``;
 
-export const Board = ({
-  onSquareClick,
-  player,
-  winner,
-  squares,
-}: BoardProps) => {
+export const Board = ({ onSquareClick, player, squares }: BoardProps) => {
   const renderSquare = i => {
     const click = () => onSquareClick(i, player);
     return <Square value={squares.get(i)} onClick={click} />;
   };
-  const status = winner ? 'Winner: ' + winner : 'Next player: ' + player;
   return (
     <BoardWrapper>
-      <Status>{status}</Status>
       <BoardRow>
         {renderSquare(0)}
         {renderSquare(1)}

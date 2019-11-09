@@ -1,4 +1,4 @@
-import { List, Record } from 'immutable';
+import { List, Map, Record } from 'immutable';
 import { AnyAction } from 'redux';
 import { ActionType } from './actions/index';
 
@@ -10,20 +10,30 @@ export interface MakeMoveAction extends AnyAction {
   index: number;
   player: Player;
 }
+export interface RestartAction extends AnyAction {
+  type: ActionType.RestartAction;
+}
 
-export type Action = MakeMoveAction;
+export type Action = MakeMoveAction | RestartAction;
 
 export interface IAppState {
   squares: List<string>;
   player: Player;
-  winner: Player | null;
+  winner: Player | 'equality' | null;
+  moves: List<Pick<MakeMoveAction, 'index' | 'player'>>;
+  playerCount: Map<Player, { win: number; lose: number }>;
 }
+const defaultPlayerCount = Map<Player, { win: number; lose: number }>()
+  .set('X', { win: 0, lose: 0 })
+  .set('O', { win: 0, lose: 0 });
 
 export class AppState
   extends Record({
     squares: List<string>(Array(9).fill(null)),
     player: 'X',
     winner: null,
+    moves: List([]),
+    playerCount: defaultPlayerCount,
   })
   implements IAppState {
   public player: Player;

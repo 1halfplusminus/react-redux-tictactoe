@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const GamePlayerInfoWrapper = styled.div`
+export const GamePlayerInfoWrapper = styled.div`
   flex-direction: row;
   display: flex;
+  flex-basis: 25%;
 `;
 const GamePlayerInfoBox = styled.div`
   flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  display: flex;
 `;
 
 const PlayerAvatar = styled.img`
@@ -16,9 +20,16 @@ const PlayerAvatar = styled.img`
 
 export interface GamePlayerInfoProps {
   avatar: string;
+  count: {
+    win: number;
+    lose: number;
+  };
 }
 
-export const GamePlayerInfo = ({ avatar }: GamePlayerInfoProps) => {
+export const GamePlayerInfo = ({
+  avatar,
+  count: { win, lose },
+}: GamePlayerInfoProps) => {
   return (
     <GamePlayerInfoWrapper>
       <div className="player">
@@ -26,10 +37,12 @@ export const GamePlayerInfo = ({ avatar }: GamePlayerInfoProps) => {
       </div>
       <GamePlayerInfoBox>
         <p>
-          Nombre de partie Gagné: <span />
+          Nombre de partie Gagné: {win}
+          <span />
         </p>
         <p>
-          Nombre de partie Perdu: <span />
+          Nombre de partie Perdu: {lose}
+          <span />
         </p>
       </GamePlayerInfoBox>
     </GamePlayerInfoWrapper>

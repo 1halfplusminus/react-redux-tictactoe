@@ -30,7 +30,7 @@ export const SquareButton = styled.button<SquareButtonProps>`
     outline: none;
   }
   :focus {
-    background: #ddd;
+    background: #d4d4d430;
   }
 `;
 

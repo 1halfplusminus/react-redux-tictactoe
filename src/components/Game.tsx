@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Player } from '../types';
 import { Board } from './Board';
+import { GamePlayerInfo } from './GamePlayerInfo';
 
 export interface GameProps {
   squares: List<string>;
@@ -13,7 +14,7 @@ export interface GameProps {
 
 const GameWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -27,7 +28,9 @@ const GamePlayersInfoWrapper = styled.div``;
 export const Game = ({ winner, player, squares, onSquareClick }: GameProps) => {
   return (
     <GameWrapper>
-      <GamePlayersInfoWrapper />
+      <GamePlayersInfoWrapper>
+        <GamePlayerInfo avatar={require('./avatars/kowaru.png')} />
+      </GamePlayersInfoWrapper>
       <GameBoard>
         <Board
           winner={winner}

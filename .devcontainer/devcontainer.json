@@ -32,7 +32,9 @@
     "jpoissonnier.vscode-styled-components",
     "eamodio.gitlens",
     "donjayamanne.githistory",
-    "prisma.vscode-graphql"
+    "prisma.vscode-graphql",
+    "ionutvmi.path-autocomplete",
+    "steoates.autoimport"
   ],
   "appPort": [6006],
   // Copy the contents to the correct location and set permissions

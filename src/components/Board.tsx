@@ -1,8 +1,8 @@
-import { List } from "immutable";
-import React = require("react");
-
-import { Player } from "../types";
-import { Square } from "./Square";
+import { List } from 'immutable';
+import React from 'react';
+import styled from 'styled-components';
+import { Player } from '../types';
+import { Square } from './Square';
 
 export interface BoardProps {
   player: Player;
@@ -10,32 +10,48 @@ export interface BoardProps {
   onSquareClick: (index: number, player: Player) => void;
   winner: Player | null;
 }
-export class Board extends React.Component<BoardProps> {
-    public renderSquare(i) {
-      const click = () => this.props.onSquareClick(i, this.props.player);
-      return <Square value={this.props.squares.get(i)} onClick={click} />;
-    }
-    public render() {
-      const status = (this.props.winner) ? "Winner: " + this.props.winner : "Next player: " + this.props.player;
-      return (
-        <div>
-          <div className="status">{status}</div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
-        </div>
-      );
-    }
-}
+
+const Status = styled.div`
+  margin-bottom: 10px;
+`;
+const BoardRow = styled.div`
+  ::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+`;
+const BoardWrapper = styled.div``;
+
+export const Board = ({
+  onSquareClick,
+  player,
+  winner,
+  squares,
+}: BoardProps) => {
+  const renderSquare = i => {
+    const click = () => onSquareClick(i, player);
+    return <Square value={squares.get(i)} onClick={click} />;
+  };
+  const status = winner ? 'Winner: ' + winner : 'Next player: ' + player;
+  return (
+    <BoardWrapper>
+      <Status>{status}</Status>
+      <BoardRow>
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
+      </BoardRow>
+      <BoardRow>
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
+      </BoardRow>
+      <BoardRow>
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
+      </BoardRow>
+    </BoardWrapper>
+  );
+};

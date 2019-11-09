@@ -1,8 +1,9 @@
 {
-    "extends": ["tslint:latest", "tslint-react"],
+    "extends": ["tslint:latest", "tslint-react",  "tslint-config-prettier"],
     "rules": {
       "jsx-wrap-multiline": false,
       "interface-name": [false, "always-prefix"],
-      "no-console": [false, "log", "error"]
+      "no-console": [false, "log", "error"],
+      "object-literal-sort-keys": false
     }
   }

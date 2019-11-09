@@ -12,13 +12,8 @@
     "allowJs": true,
     "jsx": "react",
     "downlevelIteration": true,
-    "lib": [
-      "es2015",
-      "es2017",
-      "es5",
-      "dom",
-      "dom.iterable",
-      "esnext.array",
-    ]
+    "lib": ["es2015", "es2017", "es5", "dom", "dom.iterable", "esnext.array"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }

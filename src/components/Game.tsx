@@ -1,8 +1,8 @@
-import { List } from "immutable";
-import React = require("react");
-
-import { Player } from "../types";
-import { Board } from "./Board";
+import { List } from 'immutable';
+import React from 'react';
+import styled from 'styled-components';
+import { Player } from '../types';
+import { Board } from './Board';
 
 export interface GameProps {
   squares: List<string>;
@@ -10,23 +10,36 @@ export interface GameProps {
   player: Player;
   winner: Player | null;
 }
-export class Game extends React.Component<GameProps, {}> {
-    public render() {
-      return (
-        <div className="game">
-          <div className="game-board">
-            <Board
-              winner={this.props.winner}
-              player={this.props.player}
-              squares={this.props.squares}
-              onSquareClick={this.props.onSquareClick}
-            />
-          </div>
-          <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
-          </div>
-        </div>
-      );
-    }
-}
+
+const GameWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+`;
+
+const GameBoard = styled.div``;
+
+const GamePlayersInfoWrapper = styled.div``;
+
+export const Game = ({ winner, player, squares, onSquareClick }: GameProps) => {
+  return (
+    <GameWrapper>
+      <GamePlayersInfoWrapper />
+      <GameBoard>
+        <Board
+          winner={winner}
+          player={player}
+          squares={squares}
+          onSquareClick={onSquareClick}
+        />
+      </GameBoard>
+      <div className="game-info">
+        <div>{/* status */}</div>
+        <ol>{/* TODO */}</ol>
+      </div>
+    </GameWrapper>
+  );
+};

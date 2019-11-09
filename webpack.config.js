@@ -12,14 +12,6 @@ module.exports = {
   module: {
     rules: [
       {
-          test: /\.scss$/,
-          use: [
-              "style-loader", // creates style nodes from JS strings
-              "css-loader", // translates CSS into CommonJS
-              "sass-loader" // compiles Sass to CSS, using Node Sass by default
-          ]
-      },
-      {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
@@ -41,7 +33,6 @@ module.exports = {
     "libraryTarget": "var"
   },
   devServer: {
-    contentBase: './dist',
     open: true,
     hot: true,
   },
